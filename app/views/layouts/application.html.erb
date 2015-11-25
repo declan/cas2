@@ -1,3 +1,4 @@
+<% @auth = AuthenticationConcern.new(request) %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="<%= @auth.devise_signed_in? ? 'green' : 'red' %>">
+    <% if @auth.devise_signed_in? %>
+      <%= link_to 'log out of devise', main_app.destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'sign in to devise', main_app.new_user_session_path %>
+    <% end %>
+  </nav>
 
-<%= yield %>
+  <nav class="<%= @auth.casino_signed_in? ? 'green' : 'red' %>">
+    <!-- Put in a visual indication of whether you're signed into CASino. -->
+    <% # if AuthenticationConcern.casino_signed_in?(request) %>
+    <% if @auth.casino_signed_in? %>
+      <%= link_to 'log out of CASino', casino.logout_path %>
+    <% else %>
+      <%= link_to 'sign in to CASino', casino.login_path %>
+    <% end %>
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
 
 </body>
 </html>

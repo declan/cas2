@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :development do
@@ -46,3 +48,5 @@ end
 gem 'casino'
 gem 'pg'
 gem 'casino-activerecord_authenticator'
+gem 'devise'
+gem 'devise_cas_authenticatable'

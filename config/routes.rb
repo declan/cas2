@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  mount CASino::Engine => '/', :as => 'casino'
-  get '/welcome' => 'welcome#index'
+  devise_for :users
+  mount CASino::Engine => 'cas', :as => 'casino'
+  root 'welcome#index'
 end
