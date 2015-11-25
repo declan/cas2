@@ -21,6 +21,10 @@
     <% # if AuthenticationConcern.casino_signed_in?(request) %>
     <% if @auth.casino_signed_in? %>
       <%= link_to 'log out of CASino', casino.logout_path %>
+      |
+      <%= link_to 'sessions', casino.sessions_path %>
+      |
+      <a href="//lvh.me:4000" target="_blank">movie ratings (separate app)</a>
     <% else %>
       <%= link_to 'sign in to CASino', casino.login_path %>
     <% end %>
