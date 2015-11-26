@@ -17,4 +17,10 @@ class SessionsController < Devise::SessionsController
     }
   end
 
+  def destroy
+    super
+    @auth = AuthenticationConcern.new(request, cookies)
+    @auth.sign_out
+  end
+
 end
