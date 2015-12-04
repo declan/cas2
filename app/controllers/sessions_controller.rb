@@ -23,4 +23,8 @@ class SessionsController < Devise::SessionsController
     @auth.sign_out
   end
 
+  def after_sign_in_path_for(user)
+    params[:service] || super
+  end
+
 end
